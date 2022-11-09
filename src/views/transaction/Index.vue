@@ -1,9 +1,10 @@
 <template>
-  <router-view></router-view>
+    <h3>Ini adalah Halaman Index</h3>
 </template>
 
 <script>
 export default {
-  name: 'App',
+
 }
+
 </script>
