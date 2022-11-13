@@ -31,7 +31,8 @@
                                                 class="btn btn-sm btn-outline-info">
                                                 Edit</router-link>
                                         </div>
-                                        <button class="btn btn-sm btn-outline-danger">
+                                        <button class="btn btn-sm btn-outline-danger mx-2"
+                                            @click.prevent="destroy(transaction.id, index)">
                                             Delete
                                         </button>
                                     </td>
@@ -64,8 +65,21 @@ export default {
                 });
         });
 
+        function destroy(id, index) {
+            axios.delete(
+                `http://127.0.0.1:8000/api/transaction/${id}`,
+            )
+                .then(() => {
+                    transactions.value.data.splice(index, 1)
+
+                }).catch((err) => {
+                    console.log(err.response.data);
+                });
+        }
+
         return {
-            transactions
+            transactions,
+            destroy
         }
 
     }
